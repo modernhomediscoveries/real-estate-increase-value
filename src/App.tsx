@@ -17,6 +17,7 @@ function App() {
     let currentDocumentHeight = 0;
 
     const sendMessageUpdatingHeight = (height: number) => {
+      console.log("sending message");
       window.parent.postMessage(
         { eventName: "SET_HEIGHT", payload: { height } },
         "*"
