@@ -70,7 +70,7 @@ function App() {
   }
 
   return (
-    <div className="grid md:grid-cols-2">
+    <div className="grid md:grid-cols-2 w-[1200px] max-w-full">
       <form className="bg-white p-5 rounded-t-[15px] md:rounded-l-[15px]">
         <div className="">
           <div className="flex justify-between items-center mb-4">
