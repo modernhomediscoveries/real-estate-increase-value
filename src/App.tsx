@@ -14,6 +14,41 @@ function App() {
   const [valueIncrease, setValueIncrease] = useState(0);
 
   useEffect(() => {
+    let currentDocumentHeight = 0;
+
+    const sendMessageUpdatingHeight = (height: number) => {
+      window.parent.postMessage(
+        { eventName: "SET_HEIGHT", payload: { height } },
+        "*"
+      );
+    };
+
+    const handleDocumentMutation = () => {
+      const documentHeight = document.body.scrollHeight;
+
+      if (documentHeight && documentHeight !== currentDocumentHeight) {
+        currentDocumentHeight = documentHeight;
+        console.log(documentHeight);
+        sendMessageUpdatingHeight(documentHeight);
+      }
+    };
+
+    const observer = new MutationObserver(handleDocumentMutation);
+
+    observer.observe(document.body, {
+      subtree: true,
+      attributes: true,
+      childList: true,
+      characterData: true,
+    });
+
+    setTimeout(() => {
+      const documentHeight = document.body.scrollHeight;
+      sendMessageUpdatingHeight(documentHeight);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
     const unitValue = formData?.units[0] || 0;
     const rentIncreaseValue = formData?.rentIncrease[0] || 0;
     const occupancyValue = formData?.occupancy[0] || 0;
