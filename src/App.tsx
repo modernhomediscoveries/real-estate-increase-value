@@ -70,8 +70,8 @@ function App() {
   }
 
   return (
-    <div className="grid md:grid-cols-2 w-[1200px] max-w-full">
-      <form className="bg-white p-5 rounded-t-[15px] md:rounded-l-[15px]">
+    <div className="grid md:grid-cols-2 w-[1200px] max-w-full mx-auto">
+      <form className="bg-white p-5 rounded-t-[15px] md:rounded-none md:rounded-l-[15px]">
         <div className="">
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-semibold">Number of units:</p>
@@ -198,8 +198,8 @@ function App() {
           </p>
         </div>
       </form>
-      <div className="bg-black flex justify-center items-center py-16 px-8 rounded-b-[15px] md:rounded-r-[15px]">
-        <div className="bg-white w-full py-3 rounded border-l-4 border-l-[#2ab499]">
+      <div className="bg-black flex justify-center items-center py-16 px-8 rounded-b-[15px] md:rounded-none md:rounded-r-[15px] rounded-bl-[15px] md:rounded-bl-none">
+        <div className="bg-white w-full py-3 rounded border-l-4 border-l-[#2ab499] text-center">
           <p>Property Value Increase</p>
           <p className="text-4xl font-semibold text-primary_green">
             ${Number(valueIncrease.toFixed(0)).toLocaleString()}
