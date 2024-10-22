@@ -57,7 +57,7 @@ function App() {
       unitValue * rentIncreaseValue * 12 * (occupancyValue / 100);
     const estimatedPropertyValue = annualRent / (capRateValue / 100);
 
-    setValueIncrease(estimatedPropertyValue);
+    setValueIncrease(Math.round(estimatedPropertyValue));
   }, [formData]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
