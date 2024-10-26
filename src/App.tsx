@@ -74,7 +74,7 @@ function App() {
       <form className="bg-white p-5 rounded-t-[15px] md:rounded-none md:rounded-l-[15px]">
         <div className="">
           <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">Number of units:</p>
+            <p className="text-lg font-semibold">No. of units:</p>
             <div className="relative">
               <Input
                 name="units"
