@@ -63,9 +63,13 @@ function App() {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
 
+    // Allow empty input to handle clearing the field
+    const parsedValue = parseFloat(value);
+
+    // Check if parsedValue is a number and greater than 0
     setFormData((prev) => ({
       ...prev,
-      [name]: [Number(value) > 0 ? parseFloat(value) : 0],
+      [name]: [isNaN(parsedValue) || parsedValue <= 0 ? 0 : parsedValue],
     }));
   }
 
@@ -174,8 +178,10 @@ function App() {
             <div className="relative">
               <Input
                 name="capRate"
+                type="number"
                 value={formData.capRate[0]}
                 onChange={handleChange}
+                step={0.001}
               />
               <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
                 %
@@ -189,7 +195,7 @@ function App() {
             }
             value={[Number(formData.capRate)]}
             defaultValue={[Number(formData.capRate)]}
-            max={20}
+            max={100}
             min={1}
             step={0.25}
           />
@@ -202,7 +208,10 @@ function App() {
         <div className="bg-white w-full py-3 rounded border-l-4 border-l-[#2ab499] text-center">
           <p>Property Value Increase</p>
           <p className="text-4xl font-semibold text-primary_green">
-            ${Number(valueIncrease.toFixed(0)).toLocaleString()}
+            ${" "}
+            {isNaN(Number(valueIncrease))
+              ? 0
+              : Number(valueIncrease.toFixed(0)).toLocaleString()}
           </p>
         </div>
       </div>
