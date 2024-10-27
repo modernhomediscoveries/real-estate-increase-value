@@ -33,7 +33,11 @@ export function formatNumberInput(inputValue: string, decimals?: number) {
 
 export function numberInterpret(value: string | number | undefined) {
   if (value == undefined) return 0;
-  return typeof value == "string" ? Number(value.replaceAll(",", "")) : value;
+  const sanitizedValue =
+    typeof value === "string" ? value.replace(/,/g, "") : value;
+  return typeof sanitizedValue === "string"
+    ? Number(sanitizedValue)
+    : sanitizedValue;
 }
 
 type handler = {
