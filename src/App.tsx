@@ -3,6 +3,7 @@ import "./App.css";
 
 import { Input } from "./components/ui/input";
 import { Slider } from "./components/ui/slider";
+import { formatNumberInput, numberInterpret } from "./lib/number-formatter";
 function App() {
   const initialData = {
     units: [16],
@@ -48,10 +49,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const unitValue = formData?.units[0] || 0;
-    const rentIncreaseValue = formData?.rentIncrease[0] || 0;
-    const occupancyValue = formData?.occupancy[0] || 0;
-    const capRateValue = formData?.capRate[0] || 1;
+    const unitValue = numberInterpret(formData?.units[0] || 0);
+    const rentIncreaseValue = numberInterpret(formData?.rentIncrease[0] || 0);
+    const occupancyValue = numberInterpret(formData?.occupancy[0] || 0);
+    const capRateValue = numberInterpret(formData?.capRate[0] || 1);
 
     const annualRent =
       unitValue * rentIncreaseValue * 12 * (occupancyValue / 100);
@@ -64,12 +65,14 @@ function App() {
     const { name, value } = e.target;
 
     // Allow empty input to handle clearing the field
-    const parsedValue = parseFloat(value);
+    const parsedValue = formatNumberInput(value);
 
     // Check if parsedValue is a number and greater than 0
     setFormData((prev) => ({
       ...prev,
-      [name]: [isNaN(parsedValue) || parsedValue <= 0 ? 0 : parsedValue],
+      [name]: [
+        parsedValue[parsedValue.length - 1] === "." ? parsedValue : parsedValue,
+      ],
     }));
   }
 
@@ -178,10 +181,14 @@ function App() {
             <div className="relative">
               <Input
                 name="capRate"
-                type="number"
+                type="text"
                 value={formData.capRate[0]}
-                onChange={handleChange}
-                step={0.001}
+                onChange={(e) => {
+                  e.target.value = formatNumberInput(e.target.value, 3);
+                  if (numberInterpret(e.target.value) > 100)
+                    e.target.value = "100";
+                  handleChange(e);
+                }}
               />
               <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
                 %
