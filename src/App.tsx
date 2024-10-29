@@ -137,7 +137,7 @@ function App() {
             step={25}
           />
           <p className="text-start mt-2">
-            Enter fair market rent/month charged for this type of property
+            Enter increase in rent charged per unit monthly
           </p>
         </div>
 
@@ -169,7 +169,7 @@ function App() {
             step={1}
           />
           <p className="text-start mt-2">
-            Enter fair market rent/month charged for this type of property
+            Enter the rate at which units will be occupied overall
           </p>
         </div>
 
