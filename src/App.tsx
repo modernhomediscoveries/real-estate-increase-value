@@ -86,9 +86,13 @@ function App() {
               <Input
                 name="units"
                 value={formData.units[0]}
-                onChange={handleChange}
+                onChange={(e) => {
+                  if (numberInterpret(e.target.value) > 100000)
+                    e.target.value = "100,000";
+                  handleChange(e);
+                }}
               />
-              <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
+              <p className="text-gray-400 font-light rounded absolute right-2 top-1/2  transform -translate-y-1/2">
                 Unit
               </p>
             </div>
@@ -118,7 +122,11 @@ function App() {
               <Input
                 name="rentIncrease"
                 value={formData.rentIncrease[0]}
-                onChange={handleChange}
+                onChange={(e) => {
+                  if (numberInterpret(e.target.value) > 500000)
+                    e.target.value = "500,000";
+                  handleChange(e);
+                }}
               />
               <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
                 USD
@@ -150,7 +158,11 @@ function App() {
               <Input
                 name="occupancy"
                 value={formData.occupancy[0]}
-                onChange={handleChange}
+                onChange={(e) => {
+                  if (numberInterpret(e.target.value) > 100)
+                    e.target.value = "100";
+                  handleChange(e);
+                }}
               />
               <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
                 %
