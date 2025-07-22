@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 
 import { Input } from "./components/ui/input";
 import { Slider } from "./components/ui/slider";
@@ -81,8 +80,8 @@ function App() {
       <form className="bg-white p-5 rounded-t-[15px] md:rounded-none md:rounded-l-[15px]">
         <div className="">
           <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">No. of units:</p>
-            <div className="relative">
+            <p className="text-lg font-semibold">Number Of Units</p>
+            <div className="relative w-3/12 md:w-auto">
               <Input
                 name="units"
                 value={formData.units[0]}
@@ -93,7 +92,7 @@ function App() {
                 }}
               />
               <p className="text-gray-400 font-light rounded absolute right-2 top-1/2  transform -translate-y-1/2">
-                Unit
+                Units
               </p>
             </div>
           </div>
@@ -118,7 +117,7 @@ function App() {
         <div className="">
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-semibold">Rent Increase:</p>
-            <div className="relative">
+            <div className="relative w-3/12 md:w-auto">
               <Input
                 name="rentIncrease"
                 value={formData.rentIncrease[0]}
@@ -154,7 +153,7 @@ function App() {
         <div className="">
           <div className="flex justify-between items-center mb-4">
             <p className="text-lg font-semibold">Occupancy:</p>
-            <div className="relative">
+            <div className="relative w-3/12 md:w-auto">
               <Input
                 name="occupancy"
                 value={formData.occupancy[0]}
@@ -189,8 +188,8 @@ function App() {
         <hr className="my-3" />
         <div className="">
           <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">Cap Rate:</p>
-            <div className="relative">
+            <p className="text-lg font-semibold">Capitalization Rate:</p>
+            <div className="relative w-3/12 md:w-auto">
               <Input
                 name="capRate"
                 type="text"
