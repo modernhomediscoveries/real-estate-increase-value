@@ -113,7 +113,7 @@ function App() {
         <hr className="my-3" />
         <div>
           <div className="flex font-bold justify-between items-center mb-4">
-            <p className="text-lg">Number Of Units:</p>
+            <p className="text-lg">Rent Increase:</p>
             <div className="relative">
               <Input
                 name="rentIncrease"
