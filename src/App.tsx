@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Input } from "./components/ui/input";
 import { Slider } from "./components/ui/slider";
@@ -76,22 +76,19 @@ function App() {
   }
 
   return (
-    <div className="grid md:grid-cols-2 w-[1200px] max-w-full mx-auto">
+    <div className="grid md:grid-cols-2 w-[1200px] max-w-full mx-auto text-[#2e3746]">
       <form className="bg-white p-5 rounded-t-[15px] md:rounded-none md:rounded-l-[15px]">
-        <div className="">
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">Number Of Units</p>
-            <div className="relative w-3/12 md:w-auto">
+        <div>
+          <div className="flex font-bold justify-between items-center mb-4">
+            <p className="text-lg">Number Of Units:</p>
+            <div className="relative">
               <Input
                 name="units"
                 value={formData.units[0]}
-                onChange={(e) => {
-                  if (numberInterpret(e.target.value) > 100000)
-                    e.target.value = "100,000";
-                  handleChange(e);
-                }}
+                onChange={handleChange}
+                maxValue={999999}
               />
-              <p className="text-gray-400 font-light rounded absolute right-2 top-1/2  transform -translate-y-1/2">
+              <p className="absolute right-2 top-1/2  transform -translate-y-1/2">
                 Units
               </p>
             </div>
@@ -114,20 +111,17 @@ function App() {
 
         {/* 2 */}
         <hr className="my-3" />
-        <div className="">
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">Rent Increase:</p>
-            <div className="relative w-3/12 md:w-auto">
+        <div>
+          <div className="flex font-bold justify-between items-center mb-4">
+            <p className="text-lg">Number Of Units:</p>
+            <div className="relative">
               <Input
                 name="rentIncrease"
                 value={formData.rentIncrease[0]}
-                onChange={(e) => {
-                  if (numberInterpret(e.target.value) > 500000)
-                    e.target.value = "500,000";
-                  handleChange(e);
-                }}
+                onChange={handleChange}
+                maxValue={999999}
               />
-              <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
+              <p className="absolute right-2 top-1/2  transform -translate-y-1/2">
                 USD
               </p>
             </div>
@@ -150,20 +144,17 @@ function App() {
 
         {/* 3 */}
         <hr className="my-3" />
-        <div className="">
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">Occupancy:</p>
-            <div className="relative w-3/12 md:w-auto">
+        <div>
+          <div className="flex font-bold justify-between items-center mb-4">
+            <p className="text-lg">Occupancy:</p>
+            <div className="relative">
               <Input
                 name="occupancy"
                 value={formData.occupancy[0]}
-                onChange={(e) => {
-                  if (numberInterpret(e.target.value) > 100)
-                    e.target.value = "100";
-                  handleChange(e);
-                }}
+                onChange={handleChange}
+                maxValue={100}
               />
-              <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
+              <p className="absolute right-2 top-1/2  transform -translate-y-1/2">
                 %
               </p>
             </div>
@@ -186,22 +177,18 @@ function App() {
 
         {/* 4 */}
         <hr className="my-3" />
-        <div className="">
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-lg font-semibold">Capitalization Rate:</p>
-            <div className="relative w-3/12 md:w-auto">
+        <div>
+          <div className="flex font-bold justify-between items-center mb-4">
+            <p className="text-lg">Capitalization Rate:</p>
+            <div className="relative">
               <Input
                 name="capRate"
                 type="text"
                 value={formData.capRate[0]}
-                onChange={(e) => {
-                  e.target.value = formatNumberInput(e.target.value, 3);
-                  if (numberInterpret(e.target.value) > 100)
-                    e.target.value = "100";
-                  handleChange(e);
-                }}
+                maxValue={100}
+                onChange={handleChange}
               />
-              <p className="text-gray-400 font-light  absolute right-2 top-1/2  transform -translate-y-1/2">
+              <p className="absolute right-2 top-1/2  transform -translate-y-1/2">
                 %
               </p>
             </div>
